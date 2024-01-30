@@ -81,7 +81,7 @@ const Banner = ({
 
             <div className="mt-5">
               <Link
-                href={`${ctaBtn}`}
+                href={ctaBtn}
                 className="text-primary_red inline-block uppercase border-b-[1px] border-primary_red font-bold transition-all-[0.4s] ease-in-out text-xl"
               >
                 Let's Chat!
