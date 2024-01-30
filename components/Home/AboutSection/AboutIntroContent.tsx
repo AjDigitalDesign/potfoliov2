@@ -72,34 +72,61 @@ const techTools = [
   },
 ];
 
-const AboutIntroContent = () => {
+interface AboutIntroContentProps {
+  intro: string;
+  subtitle: string;
+  designTitle: string;
+  title: string;
+  techTitle: string;
+  devprocessTitle: string;
+  designtools: {
+    title: string;
+    _key: string;
+  }[];
+  techstack: {
+    title: string;
+    _key: string;
+  }[];
+  devprocessstack: {
+    title: string;
+    _key: string;
+  }[];
+}
+
+const AboutIntroContent = ({
+  intro,
+  subtitle,
+  designTitle,
+  title,
+  techTitle,
+  devprocessTitle,
+  designtools,
+  techstack,
+  devprocessstack,
+}: AboutIntroContentProps) => {
+  console.log(designtools);
+
   return (
     <div className="py-[60px]">
       <div className="mb-[30px]">
-        <AboutHeading title="about Me" />
-        <h2 className="font-semibold text-lg mb-1">
-          Hello, my name is Zemo and i am UX/UI designer and front-end developer
-        </h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris.
-        </p>
+        <AboutHeading title={title} />
+        <h2 className="font-semibold text-lg mb-1">{subtitle}</h2>
+        <p>{intro}</p>
       </div>
       <div className="mb-[30px]">
-        <AboutHeading title="Design Tool" />
+        <AboutHeading title={designTitle} />
         <div className="flex flex-wrap">
-          {designTools?.map((tool) => (
-            <SkillTool key={tool.id} name={tool.name} />
+          {designtools?.map((design) => (
+            <SkillTool key={design._key} name={design.title} />
           ))}
         </div>
       </div>
 
       <div>
-        <AboutHeading title="Technologies and Skills" />
+        <AboutHeading title={techTitle} />
         <div className="flex flex-wrap">
-          {techTools?.map((tech) => (
-            <SkillTool key={tech.id} name={tech.name} />
+          {techstack?.map((tech) => (
+            <SkillTool key={tech._key} name={tech.title} />
           ))}
         </div>
       </div>

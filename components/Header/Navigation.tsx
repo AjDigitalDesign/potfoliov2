@@ -29,7 +29,7 @@ const NavbarMenu = [
 // bg-[#020713] backdrop-blur-[4px] text-white shadow-[0_3px_10px_rgb(0,0,0,0.2)]
 const Navigation = () => {
   return (
-    <header className="fixed w-full z-[50] overflow-hidden  backdrop-blur-[4px] bg-slate-950 text-white">
+    <header className="fixed w-full z-[50] overflow-hidden  backdrop-blur-[15px] bg-slate-950 text-white">
       <nav className="relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex flex-row justify-between items-center py-4">
           <div>

@@ -28,7 +28,6 @@ async function getData() {
 
 export async function generateMetadata() {
   const data = await getData();
-  console.log(data);
 
   return {
     title: {

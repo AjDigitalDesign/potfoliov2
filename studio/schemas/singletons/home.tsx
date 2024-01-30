@@ -16,8 +16,12 @@ export default defineType({
       title: 'Hero Banner',
     },
     {
-      name: 'skills',
-      title: 'Top Skills',
+      name: 'aboutSection',
+      title: 'About',
+    },
+    {
+      name: 'testimonialSection',
+      title: 'Testimonial',
     },
     {
       name: 'project',
@@ -70,27 +74,115 @@ export default defineType({
       group: 'banner',
     }),
     defineField({
-      name: 'skills',
-      title: 'Top Skills',
-      group: 'skills',
+      name: 'heroBannerCta',
+      title: 'CTA Link',
+      type: 'string',
+      group: 'banner',
+    }),
+
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      group: 'aboutSection',
+    }),
+    defineField({
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'string',
+      group: 'aboutSection',
+    }),
+    defineField({
+      name: 'bio',
+      title: 'Intro Bio',
+      type: 'text',
+      group: 'aboutSection',
+    }),
+    defineField({
+      name: 'mainImage',
+      title: 'Main image',
+      group: 'aboutSection',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+
+    defineField({
+      name: 'designTitle',
+      title: 'Design Title',
+      group: 'aboutSection',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'designtools',
+      title: 'Design Tools',
+      group: 'aboutSection',
       type: 'array',
       of: [
         {
           type: 'object',
           name: 'inline',
+          fields: [{type: 'string', name: 'title'}],
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'techstackTitle',
+      title: 'Technologies & Skills Title',
+      group: 'aboutSection',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'techstack',
+      title: 'Technologies and Skills',
+      group: 'aboutSection',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'inline',
+          fields: [{type: 'string', name: 'title'}],
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'devprocessTitle',
+      title: 'Development Process Title',
+      group: 'aboutSection',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'devprocessstack',
+      title: 'Development Process',
+      group: 'aboutSection',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'inline',
+          fields: [{type: 'string', name: 'title'}],
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'testimonials',
+      title: 'Testimonial',
+      group: 'testimonialSection',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'Testimonail',
           fields: [
-            {type: 'string', name: 'icon'},
-            {type: 'string', name: 'title'},
-            {
-              type: 'string',
-              name: 'description',
-              validation: (Rule) => [
-                Rule.required()
-                  .min(40)
-                  .max(150)
-                  .error('Description must be greater than 40 character and max character of 150'),
-              ],
-            },
+            {type: 'text', name: 'testimonial'},
+            {type: 'string', name: 'testimonialAuthor'},
           ],
         },
       ],
@@ -101,7 +193,7 @@ export default defineType({
       title: 'Recent Projects',
       group: 'project',
       type: 'array',
-      validation: (Rule) => Rule.max(3),
+      validation: (Rule) => Rule.min(3),
       of: [
         defineArrayMember({
           type: 'reference',

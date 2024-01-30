@@ -8,7 +8,7 @@ const Header = () => {
           My Workk
         </span>
       </h6>
-      <h2 className="font-extrabold uppercase tracking-[1px] text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+      <h2 className="font-extrabold capitalize tracking-[1px] text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
         Recent Projects
       </h2>
     </div>

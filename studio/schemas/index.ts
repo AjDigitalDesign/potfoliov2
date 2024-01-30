@@ -11,6 +11,7 @@ import openGraph from './objects/openGraph'
 import meta from './objects/meta'
 import siteMeta from './documents/siteMeta'
 import about from './singletons/about'
+import testimonial from './objects/testimonial'
 
 export const schemaTypes = [
   post,
@@ -25,4 +26,5 @@ export const schemaTypes = [
   meta,
   siteMeta,
   about,
+  testimonial,
 ]
