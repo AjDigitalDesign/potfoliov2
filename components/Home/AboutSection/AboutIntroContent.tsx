@@ -104,8 +104,6 @@ const AboutIntroContent = ({
   techstack,
   devprocessstack,
 }: AboutIntroContentProps) => {
-  console.log(designtools);
-
   return (
     <div className="py-[60px]">
       <div className="mb-[30px]">

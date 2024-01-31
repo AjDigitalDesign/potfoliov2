@@ -38,8 +38,6 @@ const About = ({
   techstack,
   devprocessstack,
 }: AboutProps) => {
-  console.log(designTitle);
-
   return (
     <div className="relative overflow-hidden mx-auto max-w-7xl px-4 sm:px-6 lg:px-8  flex flex-row justify-between items-center py-4 md:py-8 lg:py-24">
       <div className="flex flex-col lg:flex-row lg:justify-between lg:w-full lg:space-x-6">

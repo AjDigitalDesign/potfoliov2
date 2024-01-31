@@ -40,9 +40,26 @@ async function getData() {
    designtools,
    techstack,
    devprocessstack,
+   recentProject[]->{
+    _id,
+    title,
+    githubLink,
+    _updatedAt,
+     projectlanguages,
+    projectType,
+    title,
+    description,
+    href,
+    'image': featuredImage.asset->url,
+     'caption': featuredImage.caption,
+    projectCategories[]->{
+     _id,
+      title
+    }
+  }
  }`;
 
-  const data = await client.fetch(query, { revalidate: 20 });
+  const data = await client.fetch(query, { revalidate: 10 });
   return data;
 }
 
@@ -69,8 +86,6 @@ export async function generateMetadata() {
 async function Home() {
   const data = await getData();
 
-  console.log(data);
-
   return (
     <div>
       <Banner
@@ -92,7 +107,7 @@ async function Home() {
         techstack={data.techstack}
         devprocessstack={data.devprocessstack}
       />
-      <RecentProjects />
+      <RecentProjects recentProjects={data.recentProject} />
       <Cta />
     </div>
   );
