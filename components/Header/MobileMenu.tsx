@@ -31,10 +31,15 @@ const MobileMenu = ({ menulist }: MobileToggleProps) => {
         </SheetTrigger>
         <SheetContent side="left">
           <div className="h-screen">
-            <ul>
+            <ul className="mt-[40px] ">
               {menulist?.map((item) => (
-                <li key={item.id}>
-                  <Link href={item.url}>{item.label}</Link>
+                <li key={item.id} className="translate-y-0 transition-all">
+                  <Link
+                    href={item.url}
+                    className="text-lg block font-semibold pt-[15px] pb-[15px]  relative transition-[color 0.3s cubic-bezier(0.82,0,0.21,1)]"
+                  >
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>

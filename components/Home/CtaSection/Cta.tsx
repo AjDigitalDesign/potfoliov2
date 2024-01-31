@@ -22,9 +22,9 @@ const Cta = () => {
       </div>
       <div className="pt-20 lg:pt-24 text-center">
         <h2 className="text-3xl font-medium leading-[38px] md:text-3xl lg:text-4xl">
-          Let’s make something amazing together{" "}
+          Let’s make something amazing together
           <strong className="inline-block font-extrabold">
-            Start by{" "}
+            Start by
             <Link
               href="/"
               className="text-primary_red relative inline-block transition-all ease-in-out after:absolute after:content-[''] after:bottom-[1px] after:w-[100%] after:h-[1px] after:bg-primary_red/80 after:left-0"

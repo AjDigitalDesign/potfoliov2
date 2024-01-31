@@ -25,7 +25,7 @@ const NavMenu = ({ menulist }: NavMenuProps) => {
               href={item.url}
               className={`${
                 pathname == item.url
-                  ? "text-primary_red font-medium"
+                  ? "text-primary_red font-medium uppercase"
                   : "hover:text-primary_red uppercase font-semibold text-gray-400"
               } `}
             >

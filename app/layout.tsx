@@ -37,7 +37,7 @@ export async function generateMetadata() {
     openGraph: {
       title: data.ogTitle,
       description: data.ogDescription,
-      url: "https://nextjs.org",
+      url: "",
       siteName: data.site_name,
       images: [
         {
@@ -46,6 +46,13 @@ export async function generateMetadata() {
           height: 600,
         },
       ],
+    },
+    twitter: {
+      card: data.ogImage,
+      site: data.site_name,
+      title: data.site_name,
+      description: data.description,
+      image: data.ogImage,
     },
   };
 }

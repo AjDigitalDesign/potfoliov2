@@ -80,6 +80,13 @@ export async function generateMetadata() {
       },
     ],
     locale: data.locale,
+    twitter: {
+      card: data.ogImage,
+      site: data.site_name,
+      title: data.site_name,
+      description: data.description,
+      image: data.ogImage,
+    },
   };
 }
 
@@ -108,7 +115,6 @@ async function Home() {
         devprocessstack={data.devprocessstack}
       />
       <RecentProjects recentProjects={data.recentProject} />
-      <Cta />
     </div>
   );
 }

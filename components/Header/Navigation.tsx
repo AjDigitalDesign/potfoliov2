@@ -17,8 +17,8 @@ const NavbarMenu = [
   },
   {
     id: "03",
-    label: "Shelf",
-    url: "/shelf",
+    label: "Blog",
+    url: "/blog",
   },
   {
     id: "04",
