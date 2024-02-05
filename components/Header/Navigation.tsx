@@ -23,7 +23,7 @@ const NavbarMenu = [
   {
     id: "04",
     label: "Contact",
-    url: "/Contact",
+    url: "/contact",
   },
 ];
 // bg-[#020713] backdrop-blur-[4px] text-white shadow-[0_3px_10px_rgb(0,0,0,0.2)]

@@ -30,7 +30,7 @@ const RecentProjects: FC<RecentProjectsProps> = ({ recentProjects }) => {
           <Header />
         </div>
 
-        <div className="px-4 sm:px-6 lg:px-0 lg:pl-8 lg:-mr-20">
+        <div className="px-4 sm:px-6 lg:px-0 lg:pl-8 lg:-mr-20 xl:-mr-28">
           <ProjectCard featuredProjects={recentProjects} />
         </div>
       </div>

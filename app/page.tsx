@@ -115,6 +115,7 @@ async function Home() {
         devprocessstack={data.devprocessstack}
       />
       <RecentProjects recentProjects={data.recentProject} />
+      <Cta />
     </div>
   );
 }
