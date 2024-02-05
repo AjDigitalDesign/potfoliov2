@@ -27,7 +27,7 @@ const Contact = () => {
               auting fugit sed thisnquia consequuntur magni dolores eos designer
               heresm qui ratione voluptatem sequi nesciuNeque porro quisquam
               est, oursqui dolorem ipsum quia dolor sit amet consectetur,
-              adipisci velit, sed quia non numquam
+              adipisci velit, sed quia non numquam.
             </p>
             <div className="py-6">
               <ul className="flex flex-row space-x-3">
