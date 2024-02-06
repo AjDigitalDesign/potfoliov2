@@ -48,6 +48,12 @@ export async function generateMetadata() {
         },
       ],
     },
+    alternates: {
+      canonical: "/",
+      languages: {
+        "en-US": "/en-US",
+      },
+    },
     twitter: {
       card: data.ogImage,
       site: data.site_name,

@@ -1,6 +1,5 @@
 "use server";
 import { ContactFormSchema } from "@/lib/schema";
-import { FormDataSchema } from "./../lib/schema";
 import { Resend } from "resend";
 import { TypeOf, z } from "zod";
 import { EmailTemplate } from "@/components/email-template";

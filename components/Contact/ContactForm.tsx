@@ -5,16 +5,25 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Toaster, toast } from "sonner";
 
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 import { Textarea } from "../ui/textarea";
-import { Form, FormLabel } from "../ui/form";
-import { Label } from "../ui/label";
-import { sendEmail } from "@/app/_actions";
+
 import { ContactFormSchema } from "@/lib/schema";
 import { useToast } from "../ui/use-toast";
 import { ToastAction } from "../ui/toast";
+import { sendEmail } from "@/app/api/send/route";
+import { redirect } from "next/navigation";
 
 export type ContactFormInputs = z.infer<typeof ContactFormSchema>;
 
@@ -29,8 +38,22 @@ export default function ContactForm() {
     resolver: zodResolver(ContactFormSchema),
   });
 
+  // 1. Define your form.
+  const form = useForm<ContactFormInputs>({
+    resolver: zodResolver(ContactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  const resetForm = form.reset;
+
   const processForm: SubmitHandler<ContactFormInputs> = async (data) => {
     // Call the sendEmail function with the form data
+    console.log(data);
+
     const result = await sendEmail(data);
     // console.log(data);
 
@@ -43,7 +66,13 @@ export default function ContactForm() {
       //   toast.success("Email sent!");
 
       // Reset the form fields
-      reset();
+      form.reset();
+      if (form.formState.isSubmitSuccessful) {
+        return toast({
+          title: "Hi, thanks for reaching out!",
+          description: "Your message was delivered successfully",
+        });
+      }
 
       // Exit the function early
       return;
@@ -57,50 +86,60 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(processForm)} className="space-y-5">
-      <div className="space-y-2">
-        <Label htmlFor="name">Name</Label>
-        <input type="text" {...register("name")} placeholder="Name" />
-        {errors.name && <span>{errors.name.message}</span>}
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
-        <input
-          type="email"
-          placeholder="Email"
-          {...register("email")}
-          className="focus-within:shadow-none focus-visible:shadow-none focus:shadow-none outline-none"
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(processForm)} className="space-y-8">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Nmae" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-        {errors.email && <span>{errors.email.message}</span>}
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="message">Message</Label>
-        <textarea
-          placeholder="Message"
-          className="resize-none"
-          {...register("message")}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="Email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-        {errors.message && <span>{errors.message.message}</span>}
-      </div>
 
-      <Button
-        disabled={isSubmitting}
-        type="submit"
-        className="w-full font-semibold hover:bg-primary_red transition-all ease-in-out duration-300 hover:text-white"
-        onClick={() => {
-          toast({
-            title: "Scheduled: Catch up ",
-            description: "Friday, February 10, 2023 at 5:57 PM",
-            action: (
-              <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-            ),
-          });
-        }}
-      >
-        {isSubmitting ? "Submittng..." : "Submit"}
-      </Button>
-    </form>
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Message"
+                  className="resize-none"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          type="submit"
+          disabled={form.formState.isSubmitting}
+          className="font-semibold w-full hover:bg-primary_red transition-all ease-in-out duration-300 hover:text-white"
+        >
+          {form.formState.isSubmitting ? "Submitting" : "Submit"}
+        </Button>
+      </form>
+    </Form>
   );
 }
