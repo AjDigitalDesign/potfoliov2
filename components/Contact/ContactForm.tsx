@@ -21,9 +21,7 @@ import { Textarea } from "../ui/textarea";
 
 import { ContactFormSchema } from "@/lib/schema";
 import { useToast } from "../ui/use-toast";
-import { ToastAction } from "../ui/toast";
-import { sendEmail } from "@/app/api/send/route";
-import { redirect } from "next/navigation";
+import { sendEmail } from "@/app/_actions";
 
 export type ContactFormInputs = z.infer<typeof ContactFormSchema>;
 
@@ -64,15 +62,15 @@ export default function ContactForm() {
 
       // Display a success toast message
       //   toast.success("Email sent!");
-
-      // Reset the form fields
-      form.reset();
       if (form.formState.isSubmitSuccessful) {
         return toast({
           title: "Hi, thanks for reaching out!",
           description: "Your message was delivered successfully",
         });
       }
+
+      // Reset the form fields
+      form.reset();
 
       // Exit the function early
       return;
