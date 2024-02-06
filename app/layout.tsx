@@ -6,6 +6,7 @@ import Navigation from "@/components/Header/Navigation";
 import Footer from "@/components/Footer/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { client } from "@/lib/sanity";
+import { Toaster } from "@/components/ui/toaster";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -78,6 +79,7 @@ export default function RootLayout({
         >
           <Navigation />
           <main className="min-h-screen">{children}</main>
+          <Toaster />
           <Footer />
         </ThemeProvider>
       </body>

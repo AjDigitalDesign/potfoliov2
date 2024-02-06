@@ -1,4 +1,4 @@
-import ContactForm from "@/components/Contact/contactFrom";
+import ContactForm from "@/components/Contact/ContactForm";
 import Cta from "@/components/Home/CtaSection/Cta";
 import { Linkedin, Twitter, Instagram, Codepen, Github } from "lucide-react";
 import Link from "next/link";

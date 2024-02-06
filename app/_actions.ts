@@ -1,31 +1,40 @@
 "use server";
+import { ContactFormSchema } from "@/lib/schema";
+import { FormDataSchema } from "./../lib/schema";
 import { Resend } from "resend";
-import { z } from "zod";
-import { ContactFormSchema, formSchema } from "@/lib/contactFormSchema";
-import { EmailTemplate } from "../components/Email/email-template";
-
-type Inputs = z.infer<typeof formSchema>;
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { TypeOf, z } from "zod";
+import { EmailTemplate } from "@/components/email-template";
+import React from "react";
 
 type ContactFormInputs = z.infer<typeof ContactFormSchema>;
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 export async function sendEmail(data: ContactFormInputs) {
   const result = ContactFormSchema.safeParse(data);
+  try {
+    // Parse the data using the ContactFormSchema
+    const result = ContactFormSchema.parse(data);
 
-  if (result.success) {
-    const { fullName, email, phone, message } = result.data;
-    try {
-      const data = await resend.emails.send({
-        from: "Acme <onboarding@resend.dev>",
-        to: ["ajardiahdev12@gmail.com"],
-        subject: "Hello world",
-        react: EmailTemplate({ fullName, email, phone, message }),
-      });
+    // Destructure the parsed data
+    const { name, email, message } = result;
 
-      return Response.json(data.toString());
-    } catch (error) {
-      return Response.json({ error });
-    }
+    // Send the email using Resend
+    const responseData = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: ["ajardiahdev12@gmail.com"],
+      subject: "Hello World",
+      react: React.createElement(EmailTemplate, {
+        name: name,
+        email: email,
+        message: message,
+      }),
+    });
+
+    // Return success response
+    return { success: true, responseData };
+  } catch (error) {
+    // Return error response
+    return { success: false, error: error };
   }
 }
