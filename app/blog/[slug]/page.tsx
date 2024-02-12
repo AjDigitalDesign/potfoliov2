@@ -4,6 +4,59 @@ import React from "react";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { PortableText } from "@portabletext/react";
+import { Metadata, ResolvingMetadata } from "next/types";
+// import type { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: { slug: string };
+};
+
+async function getMetaData(slug: string) {
+  const query = `*[_type == "post" && slug.current == "${slug}"][0] {
+  'ogTitle': Socialmedia.ogTitle,
+  'locale': Socialmedia.locale,
+  'ogDescription': Socialmedia.ogDescription,
+  'image': Socialmedia.ogImage.asset->url,
+  'url': Socialmedia.url,
+  'site_name': Socialmedia.site_name,
+  'keyphrase': seo.keyphrase,
+  'description': seo.description,
+  'title': seo.title,
+}`;
+  const data = await client.fetch(query, { next: { revalidate: 0 } });
+  return data;
+}
+
+// Function to generate metadata
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata | ResolvingMetadata> {
+  const metaData = await getMetaData(params.slug);
+
+  console.log(metaData);
+
+  return {
+    title: metaData.site_name,
+    description: metaData.ogDescription,
+    keywords: [metaData.keyphrases],
+    siteName: metaData.site_name, // Correct property name
+    url: metaData.url,
+    images: [
+      {
+        url: metaData.image, // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: metaData.locale,
+    twitter: {
+      card: metaData.image,
+      site: metaData.site_name,
+      title: metaData.site_name,
+      description: metaData.ogDescription,
+    },
+  };
+}
 
 async function getPost(slug: string) {
   const query = `*[_type == "post" && slug.current == "${slug}"][0] {
@@ -46,8 +99,8 @@ async function Post({ params }: { params: { slug: string } }) {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 md:px-8 pt-[110px] lg:pt-[150px] relative overflow-hidden">
-      <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:py-5">
+    <div className="mx-auto max-w-7xl px-4 md:px-8 pt-[20px] md:pt-[50px] lg:pt-[60px] relative overflow-hidden">
+      <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:py-1">
         <span className="font-bold text-sm uppercase md:text-lg">
           Tech & News Updates
         </span>

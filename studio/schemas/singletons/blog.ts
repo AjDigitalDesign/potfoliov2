@@ -7,11 +7,31 @@ export default defineType({
   type: 'document',
   groups: [
     {
+      name: 'pageInfo',
+      title: 'Page Info',
+    },
+    {
       name: 'meta',
       title: 'Page SEO',
     },
   ],
   fields: [
+    defineField({
+      name: 'aboutPageTitle',
+      title: 'Page Tilte',
+      type: 'string',
+      group: 'pageInfo',
+    }),
+    defineField({
+      name: 'aboutPageSlug',
+      title: 'Page URL',
+      type: 'slug',
+      group: 'pageInfo',
+      options: {
+        source: 'aboutPageTitle',
+        maxLength: 96,
+      },
+    }),
     defineField({
       name: 'seo',
       title: 'Meta',
@@ -25,4 +45,9 @@ export default defineType({
       group: 'meta',
     }),
   ],
+  preview: {
+    select: {
+      title: 'aboutPageTitle',
+    },
+  },
 })

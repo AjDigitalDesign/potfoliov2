@@ -7,27 +7,28 @@ import { client } from "@/lib/sanity";
 import PostCard from "@/components/PostCard";
 
 async function getMetaData() {
-  const query = `*[_type == 'blog' ] {
-    'ogTitle': Socialmedia.ogTitle,
-    'locale': Socialmedia.locale,
-    'ogDescription': Socialmedia.ogDescription,
-    'image': ogImage.asset->url,
-    'url': Socialmedia.url,
-    'site_name': Socialmedia.site_name,
-    'keyphrase': seo.keyphrase,
-    'description': seo.description,
-    'title': seo.title,
-  }`;
+  const query = `*[_type == 'blog' ][0] {
+  'ogTitle': Socialmedia.ogTitle,
+  'locale': Socialmedia.locale,
+  'ogDescription': Socialmedia.ogDescription,
+  'image': Socialmedia.ogImage.asset->url,
+  'url': Socialmedia.url,
+  'site_name': Socialmedia.site_name,
+  'keyphrase': seo.keyphrase,
+  'description': seo.description,
+  'title': seo.title,
+}`;
 
-  const data = await client.fetch(query, { next: { revalidate: 0 } });
+  const data = await client.fetch(query, { next: { revalidate: 5 } });
   return data;
 }
 
 export async function generateMetadata() {
   const metaData = await getMetaData();
+  console.log(metaData.title);
 
   return {
-    title: metaData.title,
+    title: metaData.site_name,
     description: metaData.ogDescription,
     keywords: [metaData.keyphrases],
     siteName: metaData.title,
