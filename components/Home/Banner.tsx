@@ -28,7 +28,7 @@ const Banner = ({
   bannerBgImg,
 }: BannerProps) => {
   return (
-    <section className="pt-[110px] lg:pt-[150px] relative overflow-hidden">
+    <section className="pt-[110px] md:pt-[40px] lg:pt-[50px] relative overflow-hidden">
       <div className="hidden absolute top-0 bottom-0 right-[16px] lg:flex lg:items-center lg:flex-col lg:justify-center space-y-[5px] z-[1]">
         <Link
           href="/"

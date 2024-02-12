@@ -21,9 +21,26 @@ export const myStructure = (S) =>
         .id('aboutPage')
         .icon(HomeIcon)
         .child(S.document().schemaType('aboutpage').documentId('aboutpage')),
+      S.listItem()
+        .title('Blog')
+        .id('blog')
+        .icon(HomeIcon)
+        .child(S.document().schemaType('blog').documentId('blog')),
+      S.listItem()
+        .title('Proejct Page')
+        .id('projectPage')
+        .icon(HomeIcon)
+        .child(S.document().schemaType('projectPage').documentId('projectPage')),
 
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !['siteMeta', 'frontpage', 'aboutpage', 'projectCategory'].includes(listItem.getId()),
+          ![
+            'siteMeta',
+            'frontpage',
+            'aboutpage',
+            'projectCategory',
+            'blog',
+            'projectPage',
+          ].includes(listItem.getId()),
       ),
     ])

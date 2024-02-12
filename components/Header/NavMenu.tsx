@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface NavMenuProps {
   menulist: {
@@ -12,6 +12,25 @@ interface NavMenuProps {
 }
 const NavMenu = ({ menulist }: NavMenuProps) => {
   const pathname = usePathname();
+
+  const [stickyNav, setStickyNav] = useState(false);
+
+  const scrollStickNav = () => {
+    if (window.scrollY >= 20) {
+      setStickyNav(true);
+    } else {
+      setStickyNav(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollStickNav);
+    return () => {
+      window.addEventListener("scroll", scrollStickNav);
+    };
+  }, []);
+
+  const stickNavbarColor = stickyNav ? "text-black dark:text-white" : "";
 
   return (
     <div className="hidden lg:flex">
@@ -26,8 +45,8 @@ const NavMenu = ({ menulist }: NavMenuProps) => {
               className={`${
                 pathname == item.url
                   ? "text-primary_red font-medium uppercase"
-                  : "hover:text-primary_red uppercase font-semibold text-gray-400"
-              } `}
+                  : "hover:text-primary_red uppercase font-semibold"
+              } ${stickNavbarColor}`}
             >
               <span>{item.label}</span>
             </Link>

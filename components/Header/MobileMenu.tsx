@@ -1,3 +1,4 @@
+"use client";
 import {
   Sheet,
   SheetClose,
@@ -11,7 +12,7 @@ import {
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 import { MenuArrowProps } from "@radix-ui/react-dropdown-menu";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 
 interface MobileToggleProps {
@@ -23,11 +24,31 @@ interface MobileToggleProps {
 }
 
 const MobileMenu = ({ menulist }: MobileToggleProps) => {
+  const [stickyNav, setStickyNav] = useState(false);
+
+  const scrollStickNav = () => {
+    if (window.scrollY >= 20) {
+      setStickyNav(true);
+    } else {
+      setStickyNav(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollStickNav);
+    return () => {
+      window.addEventListener("scroll", scrollStickNav);
+    };
+  }, []);
   return (
     <div className="lg:hidden">
       <Sheet>
         <SheetTrigger asChild>
-          <Menu className="h-6 w-6" />
+          <Menu
+            className={
+              stickyNav ? "h-8 w-8 text-black dark:text-white" : "h-8 w-8"
+            }
+          />
         </SheetTrigger>
         <SheetContent side="left">
           <div className="h-screen">

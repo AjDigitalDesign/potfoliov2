@@ -6,48 +6,49 @@ import Link from "next/link";
 import { client } from "@/lib/sanity";
 import PostCard from "@/components/PostCard";
 
-const Testposts = [
-  {
-    id: "01",
-    title: "1 Things That You Need To Knows About E-Commerce",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi fugiat provident velit voluptate quo molestias, officiis perspiciatis minus doloremque soluta pariatur sunt architecto dicta harum consectetur nesciunt vero natus obcaecati!",
-    date: "01-23-24",
-    category: "Nextjs",
-    image: image,
-    url: "1-things-that-you-need-to-know about",
-  },
-  {
-    id: "02",
-    title: "5 Things That You Need To Knows About E-Commerce",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi fugiat provident velit voluptate quo molestias, officiis perspiciatis minus doloremque soluta pariatur sunt architecto dicta harum consectetur nesciunt vero natus obcaecati!",
-    date: "01-23-24",
-    category: "Nextjs",
-    image: image,
-    url: "5-things-that-you-need-to-know about",
-  },
-  {
-    id: "03",
-    title: "6 Things That You Need To Knows About E-Commerce",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi fugiat provident velit voluptate quo molestias, officiis perspiciatis minus doloremque soluta pariatur sunt architecto dicta harum consectetur nesciunt vero natus obcaecati!",
-    date: "01-23-24",
-    category: "Nextjs",
-    image: image,
-    url: "6-things-that-you-need-to-know about",
-  },
-  {
-    id: "04",
-    title: "7 Things That You Need To Knows About E-Commerce",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi fugiat provident velit voluptate quo molestias, officiis perspiciatis minus doloremque soluta pariatur sunt architecto dicta harum consectetur nesciunt vero natus obcaecati!",
-    date: "01-23-24",
-    category: "Nextjs",
-    image: image,
-    url: "7-things-that-you-need-to-know about",
-  },
-];
+async function getMetaData() {
+  const query = `*[_type == 'blog' ] {
+    'ogTitle': Socialmedia.ogTitle,
+    'locale': Socialmedia.locale,
+    'ogDescription': Socialmedia.ogDescription,
+    'image': ogImage.asset->url,
+    'url': Socialmedia.url,
+    'site_name': Socialmedia.site_name,
+    'keyphrase': seo.keyphrase,
+    'description': seo.description,
+    'title': seo.title,
+  }`;
+
+  const data = await client.fetch(query, { next: { revalidate: 0 } });
+  return data;
+}
+
+export async function generateMetadata() {
+  const metaData = await getMetaData();
+
+  return {
+    title: metaData.title,
+    description: metaData.ogDescription,
+    keywords: [metaData.keyphrases],
+    siteName: metaData.title,
+    url: metaData.url,
+    images: [
+      {
+        url: metaData.image, // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: metaData.locale,
+    twitter: {
+      card: metaData.image,
+      site: metaData.site_name,
+      title: metaData.site_name,
+      description: metaData.ogDescription,
+      image: metaData.image,
+    },
+  };
+}
 
 async function getPosts() {
   const query = `*[_type == 'post' ] | order(_createdAt desc){
@@ -74,7 +75,7 @@ async function getPosts() {
 async function Blog() {
   const posts = await getPosts();
   return (
-    <section className="mx-auto max-w-7xl px-4 md:px-8 pt-[110px] lg:pt-[150px] relative overflow-hidden">
+    <section className="mx-auto max-w-7xl px-4 md:px-8 pt-[110px] md:pt-[50px] lg:pt-[60px] relative overflow-hidden">
       <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:py-5">
         <span className="font-bold text-sm uppercase md:text-lg">
           OUR JOURNAL
