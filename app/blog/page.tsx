@@ -76,13 +76,13 @@ async function getPosts() {
 async function Blog() {
   const posts = await getPosts();
   return (
-    <section className="mx-auto max-w-7xl px-4 md:px-8 pt-[110px] md:pt-[50px] lg:pt-[60px] relative overflow-hidden">
-      <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:py-5">
+    <section className="mx-auto max-w-7xl px-4 md:px-8 pt-[110px] md:pt-[50px] lg:pt-[50px] relative overflow-hidden">
+      <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:pb-10">
         <span className="font-bold text-sm uppercase md:text-lg">
-          OUR JOURNAL
+          Latest Blog
         </span>
         <h1 className="text-xl font-semibold md:text-3xl lg:text-4xl">
-          Writing is socially acceptable from of schizophrenia
+          News, updates, and tips from the digital web agency
         </h1>
       </div>
 

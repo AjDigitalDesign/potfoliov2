@@ -33,22 +33,10 @@ export async function generateMetadata({
 }: Props): Promise<Metadata | ResolvingMetadata> {
   const metaData = await getMetaData(params.slug);
 
-  console.log(metaData);
-
   return {
-    title: metaData.site_name,
+    title: metaData.title,
     description: metaData.ogDescription,
     keywords: [metaData.keyphrases],
-    siteName: metaData.site_name, // Correct property name
-    url: metaData.url,
-    images: [
-      {
-        url: metaData.image, // Must be an absolute URL
-        width: 800,
-        height: 600,
-      },
-    ],
-    locale: metaData.locale,
     twitter: {
       card: metaData.image,
       site: metaData.site_name,
@@ -82,7 +70,6 @@ async function getPost(slug: string) {
 
 async function Post({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
-  console.log(post);
 
   const PortableTextComponet = {
     types: {
@@ -99,8 +86,8 @@ async function Post({ params }: { params: { slug: string } }) {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 md:px-8 pt-[20px] md:pt-[50px] lg:pt-[60px] relative overflow-hidden">
-      <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:py-1">
+    <div className="mx-auto max-w-7xl px-4 md:px-8 pt-[20px] md:pt-[50px] lg:pt-[50px] relative overflow-hidden">
+      <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:pb-10">
         <span className="font-bold text-sm uppercase md:text-lg">
           Tech & News Updates
         </span>

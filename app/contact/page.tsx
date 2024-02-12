@@ -6,8 +6,8 @@ import Link from "next/link";
 const Contact = () => {
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 md:px-8 pt-[20px] md:pt-[50px] lg:pt-[60px] relative overflow-hidden">
-        <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:py-5">
+      <div className="mx-auto max-w-7xl px-4 md:px-8 pt-[20px] md:pt-[50px] lg:pt-[50px] relative overflow-hidden">
+        <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:pb-10">
           <span className="font-bold text-sm uppercase md:text-lg">
             Contact
           </span>
