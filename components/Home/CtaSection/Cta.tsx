@@ -7,16 +7,16 @@ const Cta = () => {
       <div className="text-center">
         <blockquote>
           <p className="text-2xl md:text-3xl lg:text-4xl">
-            “Originally, creative & with an innate understand of their
-            customer’s need. Miles Raymond are always a pleasure to work !”
+            “If you don’t love something, you’re not going to go the extra mile,
+            work the extra weekend, challenge the status quo as much.”
           </p>
           <div>
             <h6 className="font-semibold capitalize text-lg mt-2 lg:mt-4 lg:text-xl">
-              Enesto Valverde
+              Steve <span className="text-primary_red">Jobs</span>
             </h6>
-            <span className="block text-slate-300 text-sm font-medium">
+            {/* <span className="block text-slate-300 text-sm font-medium">
               Director of <i className="text-primary_red">byzano.co</i>
-            </span>
+            </span> */}
           </div>
         </blockquote>
       </div>

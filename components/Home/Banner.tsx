@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import bannerBg from "../../public/hero_bg.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,23 +28,44 @@ const Banner = ({
   ctaBtn,
   bannerBgImg,
 }: BannerProps) => {
+  const [dateMessage, setDateMessage] = useState("");
+  function timeOfDay() {
+    const today = new Date();
+    const currentHr = today.getHours();
+
+    if (currentHr < 12) {
+      setDateMessage("Good Morning");
+    } else if (currentHr < 18) {
+      setDateMessage("Good Afternoon");
+    } else {
+      setDateMessage("Good evening");
+    }
+  }
+
+  useEffect(() => {
+    timeOfDay();
+  }, []);
+
   return (
     <section className="pt-[110px] md:pt-[40px] lg:pt-[50px] relative overflow-hidden">
       <div className="hidden absolute top-0 bottom-0 right-[16px] lg:flex lg:items-center lg:flex-col lg:justify-center space-y-[5px] z-[1]">
         <Link
-          href="/"
+          href="https://github.com/AjDigitalDesign"
+          target="_blank"
           className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
         >
           <Github />
         </Link>
         <Link
-          href="/"
+          href="https://www.linkedin.com/in/alfred-jardiah-jr-2b74751bb/"
+          target="_blank"
           className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
         >
           <Linkedin />
         </Link>
         <Link
-          href="/"
+          href="https://twitter.com/ajDigitalDesign"
+          target="_blank"
           className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
         >
           <Twitter />
@@ -55,7 +77,8 @@ const Banner = ({
           <Github />
         </Link>
         <Link
-          href="/"
+          href="https://codepen.io/Ajardiahjr"
+          target="_blank"
           className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
         >
           <Codepen />
@@ -66,7 +89,7 @@ const Banner = ({
           <div className="mb-14 lg:mb-0 lg:w-1/2">
             <h6 className="mb-[6px]">
               <span className="bg-primary_red/95 uppercase inline-block font-semibold py-[5px] px-[12px] leading-[20px] tracking-[3px] text-white">
-                Aj Jardiah Jr
+                {dateMessage}
               </span>
             </h6>
             <h1 className="max-w-xl text-[2.2rem] leading-none font-extrabold text-left text-2xl md:text-5xl lg:text-left lg:leading-tight capitalize mb-3">

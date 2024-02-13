@@ -31,46 +31,40 @@ const Contact = () => {
             </p>
             <div className="py-6">
               <ul className="flex flex-row space-x-3">
-                <li>
-                  <Link href="/">
-                    <Linkedin
-                      size={30}
-                      className="hover:text-primary_red transition-all ease-in-out duration-300"
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/">
-                    <Twitter
-                      size={30}
-                      className="hover:text-primary_red transition-all ease-in-out duration-300"
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/">
-                    <Instagram
-                      size={30}
-                      className="hover:text-primary_red transition-all ease-in-out duration-300"
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/">
-                    <Codepen
-                      size={30}
-                      className="hover:text-primary_red transition-all ease-in-out duration-300"
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/">
-                    <Github
-                      size={30}
-                      className="hover:text-primary_red transition-all ease-in-out duration-300"
-                    />
-                  </Link>
-                </li>
+                <Link
+                  href="https://github.com/AjDigitalDesign"
+                  target="_blank"
+                  className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
+                >
+                  <Github />
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/alfred-jardiah-jr-2b74751bb/"
+                  target="_blank"
+                  className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
+                >
+                  <Linkedin />
+                </Link>
+                <Link
+                  href="https://twitter.com/ajDigitalDesign"
+                  target="_blank"
+                  className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
+                >
+                  <Twitter />
+                </Link>
+                <Link
+                  href="/"
+                  className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
+                >
+                  <Github />
+                </Link>
+                <Link
+                  href="https://codepen.io/Ajardiahjr"
+                  target="_blank"
+                  className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
+                >
+                  <Codepen />
+                </Link>
               </ul>
             </div>
           </div>
