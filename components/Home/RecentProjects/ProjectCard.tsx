@@ -90,7 +90,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ featuredProjects }) => {
                       width={800}
                       height={600}
                       alt={project.caption}
-                      className="object-cover bg-cover hover:scale-[1.05] ease-in-[.35s]"
+                      className="object-cover bg-cover hover:scale-[1.05] transition-all duration-300 ease-in-out"
                     />
                   </div>
 
@@ -143,9 +143,6 @@ const ProjectCard: FC<ProjectCardProps> = ({ featuredProjects }) => {
                           </li>
                           <li>
                             Languages: <span>{project.projectlanguages}</span>
-                          </li>
-                          <li>
-                            Platform: <span>Sanity, MongoDB</span>
                           </li>
 
                           <li>

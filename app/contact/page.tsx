@@ -6,28 +6,26 @@ import Link from "next/link";
 const Contact = () => {
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 md:px-8 pt-[20px] md:pt-[50px] lg:pt-[50px] relative overflow-hidden">
-        <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:pb-10">
-          <span className="font-bold text-sm uppercase md:text-lg">
+      <div className="mx-auto max-w-7xl px-4 md:px-8 pt-[30px] md:pt-[50px] lg:pt-[50px] relative overflow-hidden">
+        <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:pb-1">
+          {/* <span className="font-bold text-sm uppercase md:text-lg">
             Contact
-          </span>
+          </span> */}
           <h1 className="font-semibold text-3xl leading-10 lg:text-4xl">
-            Design and Innovation
+            Contact
           </h1>
         </div>
 
         <div className="py-16 grid lg:grid-cols-2 lg:gap-20 items-center">
           <div className="">
             <h1 className="font-semibold text-3xl leading-10 lg:text-6xl">
-              Design and{" "}
-              <span className="lg:text-3xl lg:block lg:mt-2">Innovation</span>
+              Let's Connect{" "}
+              <span className="lg:text-3xl lg:block lg:mt-2">Get in Touch</span>
             </h1>
             <p className="my-3">
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-              auting fugit sed thisnquia consequuntur magni dolores eos designer
-              heresm qui ratione voluptatem sequi nesciuNeque porro quisquam
-              est, oursqui dolorem ipsum quia dolor sit amet consectetur,
-              adipisci velit, sed quia non numquam.
+              Have an exciting project you need help , collaboration, or just
+              want to connect and chat about tech, fill our the contact form and
+              let create that line of communication.
             </p>
             <div className="py-6">
               <ul className="flex flex-row space-x-3">

@@ -56,7 +56,7 @@ const Navbar = () => {
       }
     >
       <nav className="relative">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex flex-row justify-between items-center py-1">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex flex-row justify-between items-center pt-2 pb-1 lg:pt-5">
           <div>
             <Logo />
           </div>

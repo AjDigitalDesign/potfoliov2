@@ -48,7 +48,7 @@ export async function generateMetadata() {
 
 const Projects = () => {
   return (
-    <section className="pt-[20px] md:pt-[40px] lg:pt-[50px] relative overflow-hidden">
+    <section className="pt-[30px] md:pt-[40px] lg:pt-[50px] relative overflow-hidden">
       <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:py-5">
         <span className="font-bold text-sm uppercase md:text-lg">
           Featured Projects

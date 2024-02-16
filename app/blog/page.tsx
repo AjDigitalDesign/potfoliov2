@@ -5,6 +5,7 @@ import image from "../../public/blog1.jpeg";
 import Link from "next/link";
 import { client } from "@/lib/sanity";
 import PostCard from "@/components/PostCard";
+import Cta from "@/components/Home/CtaSection/Cta";
 
 async function getMetaData() {
   const query = `*[_type == 'blog' ][0] {
@@ -76,20 +77,21 @@ async function getPosts() {
 async function Blog() {
   const posts = await getPosts();
   return (
-    <section className="mx-auto max-w-7xl px-4 md:px-8 pt-[110px] md:pt-[50px] lg:pt-[50px] relative overflow-hidden">
-      <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:pb-10">
-        <span className="font-bold text-sm uppercase md:text-lg">
-          Latest Blog
-        </span>
-        <h1 className="text-xl font-semibold md:text-3xl lg:text-4xl">
-          News, updates, and tips from the digital web agency
-        </h1>
-      </div>
+    <>
+      <section className="mx-auto max-w-7xl px-4 md:px-8 pt-[30px] md:pt-[50px] lg:pt-[50px] relative overflow-hidden">
+        <div className="mx-auto max-w-screen-sm flex flex-col justify-center items-center text-center lg:pb-10">
+          <span className="font-bold text-sm uppercase md:text-lg">Blog</span>
+          <h1 className="text-xl font-semibold md:text-3xl lg:text-4xl">
+            Latest Articles
+          </h1>
+        </div>
 
-      <div className="py-12 lg:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-3 md:gap-5 lg:gap-8 place-items-center content-center justify-center items-center">
-        <PostCard posts={posts} />
-      </div>
-    </section>
+        <div className="py-12 lg:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-3 md:gap-5 lg:gap-8 place-items-center content-center justify-center items-center">
+          <PostCard posts={posts} />
+        </div>
+      </section>
+      <Cta />
+    </>
   );
 }
 
