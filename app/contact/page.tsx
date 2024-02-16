@@ -19,7 +19,7 @@ const Contact = () => {
         <div className="py-16 grid lg:grid-cols-2 lg:gap-20 items-center">
           <div className="">
             <h1 className="font-semibold text-3xl leading-10 lg:text-6xl">
-              Let's Connect{" "}
+              {`Let's Connect `}
               <span className="lg:text-3xl lg:block lg:mt-2">Get in Touch</span>
             </h1>
             <p className="my-3">
