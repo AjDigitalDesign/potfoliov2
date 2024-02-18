@@ -23,9 +23,9 @@ const Contact = () => {
               <span className="lg:text-3xl lg:block lg:mt-2">Get in Touch</span>
             </h1>
             <p className="my-3">
-              Do you have an exciting project that requires assistance,
+              {`Do you have an exciting project that requires assistance,
               collaboration, or simply want to connect and chat about tech? Fill
-              out our contact form and let's create that line of communication.
+              out our contact form and let's create that line of communication.`}
             </p>
             <div className="py-6">
               <ul className="flex flex-row space-x-3">
