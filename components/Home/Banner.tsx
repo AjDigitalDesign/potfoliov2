@@ -70,12 +70,7 @@ const Banner = ({
         >
           <Twitter />
         </Link>
-        <Link
-          href="/"
-          className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
-        >
-          <Github />
-        </Link>
+
         <Link
           href="https://codepen.io/Ajardiahjr"
           target="_blank"

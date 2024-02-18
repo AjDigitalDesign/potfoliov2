@@ -24,7 +24,7 @@ async function getMetaData(slug: string) {
   'description': seo.description,
   'title': seo.title,
 }`;
-  const data = await client.fetch(query, { next: { revalidate: 0 } });
+  const data = await client.fetch(query, { next: { revalidate: 60 } });
   return data;
 }
 

@@ -12,12 +12,6 @@ const NavbarMenu = [
     url: "/",
   },
   {
-    id: "02",
-
-    label: "Projects",
-    url: "/projects",
-  },
-  {
     id: "03",
     label: "Blog",
     url: "/blog",

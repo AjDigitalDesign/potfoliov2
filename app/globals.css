@@ -132,3 +132,9 @@ h6 {
   font-size: x-large;
   line-height: 2;
 }
+
+.ToastViewport {
+  --viewport-padding: 25px;
+  position: fixed;
+  top: 6rem;
+}

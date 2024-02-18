@@ -23,9 +23,9 @@ const Contact = () => {
               <span className="lg:text-3xl lg:block lg:mt-2">Get in Touch</span>
             </h1>
             <p className="my-3">
-              Have an exciting project you need help , collaboration, or just
-              want to connect and chat about tech, fill our the contact form and
-              let create that line of communication.
+              Do you have an exciting project that requires assistance,
+              collaboration, or simply want to connect and chat about tech? Fill
+              out our contact form and let's create that line of communication.
             </p>
             <div className="py-6">
               <ul className="flex flex-row space-x-3">
@@ -50,12 +50,7 @@ const Contact = () => {
                 >
                   <Twitter />
                 </Link>
-                <Link
-                  href="/"
-                  className=" h-[30px] w-[30px] bg-gray-900  text-white leading-[30px] text-center flex items-center justify-center rounded-[3px] hover:bg-primary_red transition-all duration-75 ease-in-out"
-                >
-                  <Github />
-                </Link>
+
                 <Link
                   href="https://codepen.io/Ajardiahjr"
                   target="_blank"

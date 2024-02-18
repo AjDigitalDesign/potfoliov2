@@ -20,7 +20,7 @@ async function getMetaData() {
   'title': seo.title,
 }`;
 
-  const data = await client.fetch(query, { next: { revalidate: 5 } });
+  const data = await client.fetch(query, { next: { revalidate: 60 } });
   return data;
 }
 
