@@ -33,6 +33,7 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | ResolvingMetadata> {
   const metaData = await getMetaData(params.slug);
+  console.log(metaData);
 
   return {
     title: metaData.title,
