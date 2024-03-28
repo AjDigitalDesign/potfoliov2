@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <div className="mb-6">
-      <h6 className="mb-[6px]">
+      <h6>
         <span className="bg-primary_red/95 uppercase inline-block font-semibold py-[5px] px-[12px] leading-[20px] tracking-[3px] text-white">
           My Work
         </span>

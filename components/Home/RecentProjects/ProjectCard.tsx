@@ -13,7 +13,7 @@ import { Pagination, Navigation } from "swiper/modules";
 
 import projectImg from "../../../public/popup-project-1.jpg";
 import Image from "next/image";
-import { ArrowBigRight } from "lucide-react";
+import { ArrowBigRight, ArrowRight } from "lucide-react";
 
 import {
   Dialog,
@@ -94,28 +94,16 @@ const ProjectCard: FC<ProjectCardProps> = ({ featuredProjects }) => {
                     />
                   </div>
 
-                  <div className="text-black py-3">
-                    <div className="-mb-3">
+                  <div className="text-black py-3 items-center flex flex-row justify-between w-full">
+                    <div className="">
                       <h6 className="text-black font-semibold capitalize text-lg text-left">
                         {project.title}
                       </h6>
+                      <span className="block">{project.projectlanguages}</span>
                     </div>
-                    <div className="flex flex-row justify-between w-full items-center">
-                      <div>
-                        <ul className="flex flex-row items-center space-x-2 text-sm text-gray-500">
-                          {project.projectCategories.map((cat) => (
-                            <li key={cat._id}>{cat.title}</li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <DialogTrigger className="w-[45px] h-[45px] flex items-center justify-center bg-primary_red rounded-[50%] border-black border-[1px] cursor-pointer text-white hover:bg-background">
-                          <div>
-                            <ArrowBigRight />
-                          </div>
-                        </DialogTrigger>
-                      </div>
-                    </div>
+                    <DialogTrigger className="w-[45px] h-[45px] flex items-center justify-center bg-primary_red rounded-[50%]  cursor-pointer text-white hover:bg-red-900">
+                      <ArrowRight />
+                    </DialogTrigger>
                   </div>
                 </div>
                 <DialogContent className="max-w-screen-lg grid grid-cols-1 lg:grid-cols-2 w-full">

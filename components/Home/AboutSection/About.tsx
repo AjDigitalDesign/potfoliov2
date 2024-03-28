@@ -39,7 +39,7 @@ const About = ({
   devprocessstack,
 }: AboutProps) => {
   return (
-    <div className="relative overflow-hidden mx-auto max-w-7xl px-4 sm:px-6 lg:px-8  flex flex-row justify-between items-center py-4 md:py-8 lg:py-24">
+    <div className="relative overflow-hidden max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex flex-row justify-between items-center py-4 md:py-8 lg:py-24">
       <div className="flex flex-col lg:flex-row lg:justify-between lg:w-full lg:space-x-6">
         <div className="order-2 lg:order-1 lg:w-[45%] items-center justify-center">
           <Image

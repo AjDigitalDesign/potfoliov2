@@ -47,7 +47,7 @@ const Banner = ({
   }, []);
 
   return (
-    <section className="pt-[110px] md:pt-[40px] lg:pt-[50px] relative overflow-hidden">
+    <section className="pt-[30px] md:pt-[40px] lg:pt-[50px] relative overflow-hidden">
       <div className="hidden absolute top-0 bottom-0 right-[16px] lg:flex lg:items-center lg:flex-col lg:justify-center space-y-[5px] z-[1]">
         <Link
           href="https://github.com/AjDigitalDesign"
@@ -79,7 +79,7 @@ const Banner = ({
           <Codepen />
         </Link>
       </div>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative">
         <div className="flex flex-wrap items-center justify-center md:flex-row">
           <div className="mb-14 lg:mb-0 lg:w-1/2">
             <h6 className="mb-[6px]">

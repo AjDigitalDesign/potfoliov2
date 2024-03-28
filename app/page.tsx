@@ -6,6 +6,7 @@ import blog1 from "../public/blog1.jpeg";
 import blog12 from "../public/blog2.jpeg";
 import { client } from "@/lib/sanity";
 import Cta from "@/components/Home/CtaSection/Cta";
+import CurrentProjects from "@/components/Home/RecentProjects/CurrentProjects";
 
 async function getMetaData() {
   const query = `*[_type == 'frontpage'][0] {
@@ -63,6 +64,30 @@ async function getData() {
   return data;
 }
 
+async function getProjectsData() {
+  const query = `*[_type == 'projects'] {
+    _id,
+    title,
+    githubLink,
+    _updatedAt,
+     projectlanguages,
+    projectType,
+    title,
+    description,
+    href,
+    'image': featuredImage.asset->url,
+     'caption': featuredImage.caption,
+    projectCategories[]->{
+     _id,
+      title
+    }
+
+}`;
+
+  const data = await client.fetch(query, { next: { revalidate: 60 } });
+  return data;
+}
+
 export async function generateMetadata() {
   const data = await getMetaData();
 
@@ -92,6 +117,8 @@ export async function generateMetadata() {
 
 async function Home() {
   const data = await getData();
+  const projects = await getProjectsData();
+  console.log(projects);
 
   return (
     <div>
@@ -115,6 +142,7 @@ async function Home() {
         devprocessstack={data.devprocessstack}
       />
       <RecentProjects recentProjects={data.recentProject} />
+
       <Cta />
     </div>
   );

@@ -45,12 +45,12 @@ const Navbar = () => {
     <header
       className={
         stickyNav
-          ? "fixed w-full z-[50] overflow-hidden  backdrop-blur-[15px] transition-all ease-in-out duration-300 bg-white/20 text-white shadow-lg"
+          ? "fixed w-full z-[50] overflow-hidden  backdrop-blur-[15px] transition-all ease-in-out duration-300 bg-background text-white shadow-lg"
           : "bg-transparent"
       }
     >
       <nav className="relative">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex flex-row justify-between items-center pt-2 pb-1 lg:pt-5">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-50 flex flex-row justify-between items-center pt-2 pb-1 lg:pt-5">
           <div>
             <Logo />
           </div>
