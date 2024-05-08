@@ -19,7 +19,7 @@ async function getMetaData() {
         'locale': Socialmedia.locale,  
    }`;
 
-  const data = await client.fetch(query, { next: { revalidate: 60 } });
+  const data = await client.fetch(query, { next: { revalidate: 3600 } });
   return data;
 }
 
@@ -59,7 +59,7 @@ async function getData() {
   }
  }`;
 
-  const data = await client.fetch(query, { revalidate: 10 });
+  const data = await client.fetch(query, { next: { revalidate: 10 } });
   return data;
 }
 
@@ -83,7 +83,7 @@ async function getProjectsData() {
 
 }`;
 
-  const data = await client.fetch(query, { next: { revalidate: 60 } });
+  const data = await client.fetch(query, { next: { revalidate: 10 } });
   return data;
 }
 
