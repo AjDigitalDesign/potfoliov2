@@ -6,6 +6,9 @@ import blog1 from "../public/blog1.jpeg";
 import blog12 from "../public/blog2.jpeg";
 import { client } from "@/lib/sanity";
 import Cta from "@/components/Home/CtaSection/Cta";
+import { NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
 
 async function getMetaData() {
   const query = `*[_type == 'frontpage'][0] {
