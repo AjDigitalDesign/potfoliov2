@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { client } from "@/lib/sanity";
 import { Toaster } from "@/components/ui/toaster";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Analytics } from "@vercel/analytics/react";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -89,6 +90,7 @@ export default function RootLayout({
           <Navigation />
 
           <main className="min-h-screen">{children}</main>
+          <Analytics />
           <Footer />
         </ThemeProvider>
       </body>
