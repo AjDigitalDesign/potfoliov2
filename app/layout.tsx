@@ -7,6 +7,7 @@ import Footer from "@/components/Footer/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { client } from "@/lib/sanity";
 import { Toaster } from "@/components/ui/toaster";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -71,6 +72,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <GoogleAnalytics />
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
